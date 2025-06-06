@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Apostilas Gourmet</title>
+  <style>
+    :root {
+      --cor1: #fffaf6;
+      --cor2: #f8e1cc;
+      --cor3: #8b4d2f;
+      --cor4: #fff0e1;
+      --cor-btn: #d97c4d;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--cor1);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header.topo {
+      background-color: var(--cor2);
+      padding: 20px;
+      text-align: center;
+    }
+    header .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    nav .menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      list-style: none;
+      padding: 15px;
+      background-color: var(--cor4);
+      margin: 0;
+    }
+    nav .menu li a {
+      text-decoration: none;
+      color: var(--cor3);
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav .menu li a:hover {
+      color: #d97c4d;
+    }
+    .secao {
+      padding: 30px 5vw;
+      max-width: 1200px;
+      margin: 0 auto 30px auto;
+    }
+    .secao h2 {
+      color: var(--cor3);
+      border-bottom: 2px solid var(--cor3);
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+    }
+    .catalogo-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .item {
+      flex: 1 1 350px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 14px rgba(0,0,0,0.07);
+      margin: 0 0 15px 0;
+      overflow: hidden;
+      min-width: 350px;
+      max-width: 420px;
+      transition: transform 0.18s;
+    }
+    .item:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.14);
+    }
+    .item img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      background: #fff8f1;
+      border-right: 2px solid #f2e2d4;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 2px #d1bfae);
+    }
+    .item .info {
+      padding: 20px 16px;
+      flex: 1;
+    }
+    .item .info h3 {
+      margin: 0 0 7px 0;
+      font-size: 1.12em;
+      color: var(--cor3);
+    }
+    .item .info p {
+      margin: 0 0 8px 0;
+      font-size: 0.97em;
+    }
+    .item button {
+      background-color: var(--cor-btn);
+      color: white;
+      border: none;
+      padding: 9px 17px;
+      border-radius: 5px;
+      margin-top: 7px;
+      cursor: pointer;
+      font-size: 0.97em;
+      transition: background 0.15s;
+    }
+    .item button:hover {
+      background-color: #b35d2f;
+    }
+    #carrinho {
+      background: #fffbe8;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      padding: 30px 5vw;
+      margin-bottom: 60px;
+      max-width: 800px;
+    }
+    #lista-carrinho {
+      margin: 15px 0 15px 0;
+      padding-left: 18px;
+    }
+    #pagamentos {
+      display: flex;
+      gap: 18px;
+      margin-top: 10px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .pagamento-metodo {
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px 16px;
+      border: 1px solid #f0e0d2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1em;
+      min-width: 110px;
+    }
+    .pagamento-metodo img {
+      height: 1.5em;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .finalizar-btn {
+      background: #43b97f;
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      font-size: 1.2em;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 22px;
+      box-shadow: 0 2px 8px rgba(67,185,127,0.11);
+      transition: background 0.14s;
+    }
+    .finalizar-btn:hover {
+      background: #32875c;
+    }
+    .dica-edicao {
+      font-size: 1em;
+      color: #9e693d;
+      margin: 50px 0 15px 0;
+      background: #f8e6d4;
+      border-left: 4px solid #d97c4d;
+      padding: 14px 22px;
+      border-radius: 0 8px 8px 0;
+      max-width: 800px;
+    }
+    footer {
+      text-align: center;
+      padding: 16px;
+      background-color: var(--cor2);
+      font-size: 1em;
+    }
+    @media (max-width: 800px) {
+      .catalogo-lista { flex-direction: column; gap: 0; }
+      .item { max-width: 100%; min-width: 0; margin-bottom: 22px; }
+      .secao { padding: 19px 3vw; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <img src="img/logo.png" alt="Logo da Marca" class="logo">
+    <h1>Catálogo de Apostilas Gourmet</h1>
+  </header>
+
+  <nav>
+    <ul class="menu">
+      <li><a href="#bolos">Bolos e Tortas</a></li>
+      <li><a href="#doces">Doces Gourmet</a></li>
+      <li><a href="#fitness">Fitness e Saudáveis</a></li>
+      <li><a href="#salgados">Salgados e Massas</a></li>
+      <li><a href="#geladas">Sobremesas Geladas</a></li>
+      <li><a href="#outros">Outros</a></li>
+      <li><a href="#carrinho">Carrinho</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- SEÇÃO: BOLOS E TORTAS -->
+    <section id="bolos" class="secao">
+      <h2>Bolos e Tortas</h2>
+      <div class="catalogo-lista">
+        <!-- Cada item: -->
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Bolo Caseiro">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo Caseiro</h3>
+            <p>Bolos tradicionais, fofinhos e perfeitos para o dia a dia.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo Caseiro')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Bolo de Festa">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo de Festa</h3>
+            <p>Receitas especiais para festas e comemorações.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo de Festa')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Bolo de Rolo">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo de Rolo</h3>
+            <p>O clássico pernambucano e suas variações irresistíveis.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo de Rolo')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=400&q=80" alt="Bolo Gelado">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo Gelado</h3>
+            <p>Bolos gelados de corte, perfeitos para vender e lucrar.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo Gelado')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=400&q=80" alt="Bolo Piscina">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo Piscina</h3>
+            <p>Bolos com recheio central, visual e sabor surpreendentes.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo Piscina')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0723c6c?auto=format&fit=crop&w=400&q=80" alt="Bolo Vulcão">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo Vulcão</h3>
+            <p>Bolos com cobertura cremosa e irresistível que transborda.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo Vulcão')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Bolo Vulcão 2">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo Vulcão [02]</h3>
+            <p>Mais receitas criativas de bolos com cobertura que escorre.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo Vulcão [02]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=400&q=80" alt="Bolo Zero">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolos Zero</h3>
+            <p>Bolos para dietas restritivas e receitas sem açúcar ou glúten.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolos Zero')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0723c6c?auto=format&fit=crop&w=400&q=80" alt="Bolo de Liquidificador">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolos de Liquidificador</h3>
+            <p>Praticidade e sabor: bolos rápidos no liquidificador.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolos de Liquidificador')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Bolos">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolos</h3>
+            <p>Seleção variada de bolos para todas as ocasiões.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolos')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1458642849426-cfb724f15ef7?auto=format&fit=crop&w=400&q=80" alt="Bolos sem fermento">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolos sem Fermento</h3>
+            <p>Bolos deliciosos feitos sem fermento químico.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolos sem Fermento')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Bolo de Aniversário">
+          <div class="info">
+            <h3>Apostila - Receitas de Aniversário</h3>
+            <p>Bolos e doces para festas de aniversário inesquecíveis.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Aniversário')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=400&q=80" alt="Bolo Piscina">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo Piscina</h3>
+            <p>Bolos com recheios criativos para surpreender seus clientes.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo Piscina')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=400&q=80" alt="Bolo de Rolo">
+          <div class="info">
+            <h3>Apostila - Receitas de Bolo de Rolo</h3>
+            <p>Receitas clássicas e versões criativas do bolo de rolo tradicional.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bolo de Rolo')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=400&q=80" alt="Bentô Cake">
+          <div class="info">
+            <h3>Apostila - Receitas de Bentô Cake</h3>
+            <p>Bolos individuais personalizados e super tendência.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bentô Cake')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Fatias de bolo">
+          <div class="info">
+            <h3>Apostila - Receitas de Fatias de Bolo</h3>
+            <p>Receitas de bolos para vender em fatias lucrativas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Fatias de Bolo')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Cucas">
+          <div class="info">
+            <h3>Apostila - Receitas de Cucas</h3>
+            <p>Cucas doces e salgadas com coberturas irresistíveis.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Cucas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Cucas">
+          <div class="info">
+            <h3>Apostila - Receitas de Cucas</h3>
+            <p>Mais receitas de cucas deliciosas para sua coleção.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Cucas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Torta na Travessa">
+          <div class="info">
+            <h3>Apostila - Receitas de Torta na Travessa</h3>
+            <p>Tortas práticas para montar e servir em travessas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Torta na Travessa')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=400&q=80" alt="Torta Salgada de Liquidificador">
+          <div class="info">
+            <h3>Apostila - Receitas de Torta Salgada de Liquidificador</h3>
+            <p>Receitas rápidas e versáteis, ideais para lanches e festas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Torta Salgada de Liquidificador')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=400&q=80" alt="Tortas Doces">
+          <div class="info">
+            <h3>Apostila - Receitas de Tortas Doces</h3>
+            <p>Receitas para sobremesas sofisticadas e deliciosas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Tortas Doces')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=400&q=80" alt="Tortas Salgadas">
+          <div class="info">
+            <h3>Apostila - Receitas de Tortas Salgadas</h3>
+            <p>Tortas práticas, saborosas e perfeitas para vender.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Tortas Salgadas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=400&q=80" alt="Torta de Vitrine">
+          <div class="info">
+            <h3>Apostila - Receitas de Torta de Vitrine</h3>
+            <p>Tortas para apresentação impecável em vitrines e festas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Torta de Vitrine')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=400&q=80" alt="Slice Cakes">
+          <div class="info">
+            <h3>Apostila - Receitas de Slice Cakes</h3>
+            <p>Bolos em fatias estilosas, tendência nas confeitarias.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Slice Cakes')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: DOCES GOURMET -->
+    <section id="doces" class="secao">
+      <h2>Doces Gourmet</h2>
+      <div class="catalogo-lista">
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Balas Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Balas Gourmet</h3>
+            <p>Balas macias, recheadas e ideais para venda.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Balas Gourmet')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80" alt="Barras Recheadas">
+          <div class="info">
+            <h3>Apostila - Receitas de Barras Recheadas</h3>
+            <p>Barras doces com recheios variados e criativos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Barras Recheadas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Bem Casado">
+          <div class="info">
+            <h3>Apostila - Receitas de Bem Casado</h3>
+            <p>O clássico das festas com recheios variados.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Bem Casado')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Brigadeiro Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Brigadeiro Gourmet</h3>
+            <p>Brigadeiros especiais para festas, presentes e vendas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Brigadeiro Gourmet')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Brigadeiro sem fogo">
+          <div class="info">
+            <h3>Apostila - Receitas de Brigadeiro sem Fogo</h3>
+            <p>Brigadeiros práticos, feitos sem precisar levar ao fogo.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Brigadeiro sem Fogo')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Cookies">
+          <div class="info">
+            <h3>Apostila - Receitas de Cookies</h3>
+            <p>Cookies crocantes, macios e recheados.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Cookies')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80" alt="Donuts">
+          <div class="info">
+            <h3>Apostila - Receitas de Donuts</h3>
+            <p>Donuts coloridos, recheados e cobertos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Donuts')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Macarrons">
+          <div class="info">
+            <h3>Apostila - Receitas de Macarrons [02]</h3>
+            <p>O doce francês mais famoso, em versões fáceis de fazer.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Macarrons [02]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Palha Italiana">
+          <div class="info">
+            <h3>Apostila - Receitas de Palha Italiana</h3>
+            <p>Variações do clássico italiano com diferentes recheios.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Palha Italiana')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Palha Italiana">
+          <div class="info">
+            <h3>Apostila - Receitas de Palha Italiana</h3>
+            <p>Novas receitas de palha italiana para seu cardápio.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Palha Italiana')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Pipoca Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Pipoca Gourmet</h3>
+            <p>Pipocas doces e salgadas com coberturas incríveis.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Pipoca Gourmet')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Quindim">
+          <div class="info">
+            <h3>Apostila - Receitas de Quindim</h3>
+            <p>O doce amarelinho que derrete na boca.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Quindim')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Rocambole">
+          <div class="info">
+            <h3>Apostila - Receitas de Rocambole</h3>
+            <p>Rocamboles doces e salgados para festas e vendas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Rocambole')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Trufas">
+          <div class="info">
+            <h3>Apostila - Receitas de Trufas</h3>
+            <p>Trufas gourmet com recheios diversos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Trufas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Trufas e Bombons">
+          <div class="info">
+            <h3>Apostila - Receitas de Trufas e Bombons</h3>
+            <p>Receitas sofisticadas para presentear e vender.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Trufas e Bombons')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: FITNESS E SAUDÁVEIS -->
+    <section id="fitness" class="secao">
+      <h2>Receitas Fitness e Saudáveis</h2>
+      <div class="catalogo-lista">
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Doces Fitness">
+          <div class="info">
+            <h3>Apostila - Receitas de Doces Fitness</h3>
+            <p>Doces saudáveis para quem não abre mão do sabor.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Doces Fitness')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Fitness">
+          <div class="info">
+            <h3>Apostila - Receitas de Fitness</h3>
+            <p>Receitas para uma vida saudável e equilibrada.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Fitness')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Pratos Fitness">
+          <div class="info">
+            <h3>Apostila - Receitas de Pratos Fitness</h3>
+            <p>Pratos principais nutritivos e funcionais.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Pratos Fitness')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Receitas Zero Açúcar e Fitness">
+          <div class="info">
+            <h3>Apostila - Receitas de Zero Açúcar e Fitness</h3>
+            <p>Receitas para dietas com restrição de açúcar.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Zero Açúcar e Fitness')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Receitas Saudáveis">
+          <div class="info">
+            <h3>Apostila - Receitas de Sorvetes Saudáveis</h3>
+            <p>Sorvetes feitos com ingredientes naturais e funcionais.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Sorvetes Saudáveis')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: SALGADOS E MASSAS -->
+    <section id="salgados" class="secao">
+      <h2>Salgados e Massas</h2>
+      <div class="catalogo-lista">
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Empadas">
+          <div class="info">
+            <h3>Apostila - Receitas de Empadas</h3>
+            <p>Empadas caseiras e recheios criativos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Empadas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Empadão">
+          <div class="info">
+            <h3>Apostila - Receitas de Empadão</h3>
+            <p>Receitas de empadões recheados e suculentos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Empadão')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Hamburguer Artesanal">
+          <div class="info">
+            <h3>Apostila - Receitas de Hamburguer Artesanal</h3>
+            <p>Hambúrgueres suculentos, blends e acompanhamentos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Hamburguer Artesanal')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Hot Dog">
+          <div class="info">
+            <h3>Apostila - Receitas de Hot Dog</h3>
+            <p>Versões criativas e gourmet do clássico cachorro-quente.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Hot Dog')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Massas Profissional">
+          <div class="info">
+            <h3>Apostila - Receitas de Massas Profissional</h3>
+            <p>Receitas de massas para produção profissional.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Massas Profissional')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Panetone e Chocotone">
+          <div class="info">
+            <h3>Apostila - Receitas de Panetone e Chocotone [02]</h3>
+            <p>Receitas tradicionais e gourmet para datas especiais.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Panetone e Chocotone [02]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Pastel de Feira">
+          <div class="info">
+            <h3>Apostila - Receitas de Pastel de Feira</h3>
+            <p>O pastel crocante e recheado igual ao da feira!</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Pastel de Feira')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Pão de Mel">
+          <div class="info">
+            <h3>Apostila - Receitas de Pão de Mel</h3>
+            <p>Pão de mel macio, recheado e com cobertura especial.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Pão de Mel')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Pepanificação">
+          <div class="info">
+            <h3>Apostila - Receitas Pepanificação</h3>
+            <p>Receitas de pães variados, doces e salgados.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas Pepanificação')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Salgados">
+          <div class="info">
+            <h3>Apostila - Receitas de Salgados [02]</h3>
+            <p>Salgados tradicionais para vender muito.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Salgados [02]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: SOBREMESAS GELADAS -->
+    <section id="geladas" class="secao">
+      <h2>Sobremesas Geladas</h2>
+      <div class="catalogo-lista">
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Geladinho Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Geladinho Gourmet [02]</h3>
+            <p>Geladinhos com sabores inovadores e apresentação profissional.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Geladinho Gourmet [02]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Geladinho Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Geladinho Gourmet [06]</h3>
+            <p>Mais opções de geladinhos para refrescar e lucrar.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Geladinho Gourmet [06]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Iogurte Caseiro">
+          <div class="info">
+            <h3>Apostila - Receitas de Iogurte Caseiro</h3>
+            <p>Faça iogurtes naturais, cremosos e saudáveis.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Iogurte Caseiro')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Mousse">
+          <div class="info">
+            <h3>Apostila - Receitas de Mousse</h3>
+            <p>Receitas de mousses leves, aeradas e irresistíveis.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Mousse')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Ovos de Páscoa">
+          <div class="info">
+            <h3>Apostila - Receitas de Ovos de Páscoa [03]</h3>
+            <p>Receitas para ovos de páscoa artesanais e recheados.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Ovos de Páscoa [03]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Pudim">
+          <div class="info">
+            <h3>Apostila - Receitas de Pudim</h3>
+            <p>Pudins tradicionais, de leite condensado e sabores especiais.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Pudim')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Pudim no Pote">
+          <div class="info">
+            <h3>Apostila - Receitas de Pudim no Pote</h3>
+            <p>Pudins individuais para festas e vendas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Pudim no Pote')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Sacolé Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Sacolé Gourmet</h3>
+            <p>Receitas de sacolés com sabores diferenciados.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Sacolé Gourmet')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Sorvetes Caseiros">
+          <div class="info">
+            <h3>Apostila - Receitas de Sorvetes Caseiros</h3>
+            <p>Sorvetes cremosos e refrescantes para toda a família.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Sorvetes Caseiros')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: OUTROS (DICAS, TÉCNICAS E DIVERSOS) -->
+    <section id="outros" class="secao">
+      <h2>Outros (Dicas, Técnicas e Diversos)</h2>
+      <div class="catalogo-lista">
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
+          <div class="info">
+            <h3>Apostila - Receitas de Air Fryer {02}</h3>
+            <p>Receitas práticas e saudáveis feitas na air fryer.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Air Fryer {02}')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Alfajor">
+          <div class="info">
+            <h3>Apostila - Receitas de Alfajor</h3>
+            <p>O clássico argentino com recheios deliciosos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Alfajor')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Caldo">
+          <div class="info">
+            <h3>Apostila - Receitas de Caldos</h3>
+            <p>Caldos quentes e reconfortantes para os dias frios.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Caldos')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Chantininho">
+          <div class="info">
+            <h3>Apostila - Receitas de Chantininho</h3>
+            <p>O creme de confeiteiro mais usado em bolos decorados.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Chantininho')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Cheesecake">
+          <div class="info">
+            <h3>Apostila - Receitas de Cheesecake</h3>
+            <p>Cheesecakes cremosos e de diversos sabores.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Cheesecake')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Copo da Felicidade">
+          <div class="info">
+            <h3>Apostila - Receitas de Copo da Felicidade</h3>
+            <p>Sobremesas em camadas, sucesso nas vendas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Copo da Felicidade')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Copo">
+          <div class="info">
+            <h3>Apostila - Receitas de Copo</h3>
+            <p>Sobremesas no copo, práticas e deliciosas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Copo')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Cone Trufado">
+          <div class="info">
+            <h3>Apostila - Receitas de Cone Trufado</h3>
+            <p>Cones recheados com cremes e chocolates variados.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Cone Trufado')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Cucuz Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Cuscuz Gourmet [03]</h3>
+            <p>Cuscuz com sabores inovadores e apresentação gourmet.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Cuscuz Gourmet [03]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Dicas de Confeitaria">
+          <div class="info">
+            <h3>Apostila - Dicas de Confeitaria</h3>
+            <p>Dicas essenciais para melhorar sua produção e vendas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Dicas de Confeitaria')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Geleias Caseiras">
+          <div class="info">
+            <h3>Apostila - Receitas de Geleias Caseiras</h3>
+            <p>Geleias de frutas naturais, sem conservantes.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Geleias Caseiras')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Liquidificador">
+          <div class="info">
+            <h3>Apostila - Receitas de Liquidificador</h3>
+            <p>Receitas práticas para facilitar sua rotina.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Liquidificador')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Nordestinas">
+          <div class="info">
+            <h3>Apostila - Receitas Nordestinas</h3>
+            <p>O melhor da culinária do nordeste brasileiro.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas Nordestinas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Peanut Butter">
+          <div class="info">
+            <h3>Apostila - Conquistando o Cliente</h3>
+            <p>Estrategias e dicas para aumentar suas vendas.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Conquistando o Cliente')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <!-- Recheios, Premium, Não vão ao fogo, etc -->
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Recheio Premium">
+          <div class="info">
+            <h3>Apostila - Receitas de Recheio Premium</h3>
+            <p>Recheios diferenciados para valorizar seus produtos.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Recheio Premium')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Recheios">
+          <div class="info">
+            <h3>Apostila - Receitas de Recheios [02]</h3>
+            <p>Receitas variadas de recheios para bolos e doces.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Recheios [02]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Recheios">
+          <div class="info">
+            <h3>Apostila - Receitas de Recheios [03]</h3>
+            <p>Mais opções de recheios para diversificar seu cardápio.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Recheios [03]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Recheios que não vão ao fogo">
+          <div class="info">
+            <h3>Apostila - Receitas de Recheios que Não Vão ao Fogo [05]</h3>
+            <p>Recheios práticos e rápidos, sem necessidade de cozimento.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Recheios que Não Vão ao Fogo [05]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb2281ab6b6?auto=format&fit=crop&w=400&q=80" alt="Recheios que não vão ao fogo">
+          <div class="info">
+            <h3>Apostila - Receitas de Recheios que Não Vão ao Fogo [5]</h3>
+            <p>Novas receitas práticas de recheios sem fogo.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Recheios que Não Vão ao Fogo [5]')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <!-- Outros -->
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Sequilhos Gourmet">
+          <div class="info">
+            <h3>Apostila - Receitas de Sequilhos Gourmet</h3>
+            <p>Biscoitinhos amanteigados e sofisticados para vender muito.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Sequilhos Gourmet')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Sopas">
+          <div class="info">
+            <h3>Apostila - Receitas de Sopas</h3>
+            <p>Sopas reconfortantes para todas as estações.</p>
+            <button onclick="adicionarAoCarrinho('Apostila - Receitas de Sopas')">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARRINHO -->
+    <section id="carrinho" class="secao">
+      <h2>Carrinho</h2>
+      <ul id="lista-carrinho"></ul>
+
+      <div id="pagamentos">
+        <div class="pagamento-metodo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Pix_logo.svg" alt="Pix" style="height:28px;"> PIX
+        </div>
+        <div class="pagamento-metodo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Cartão Visa"> Crédito/Débito
+        </div>
+        <div class="pagamento-metodo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Cartão Mastercard"> Crédito/Débito
+        </div>
+      </div>
+      <button class="finalizar-btn" onclick="finalizarCompra()">Finalizar compra</button>
+    </section>
+
+    <!-- ORIENTAÇÃO PARA EDIÇÃO -->
+    <div class="dica-edicao">
+      <strong>Como adicionar ou editar uma apostila:</strong><br>
+      1. Procure pela seção desejada no código HTML (por exemplo, <code>id="doces"</code> para Doces Gourmet).<br>
+      2. Copie um bloco <code>&lt;div class="item"&gt;...&lt;/div&gt;</code> da seção, cole e altere:<br>
+      &nbsp;&nbsp;- O nome da apostila em <code>&lt;h3&gt;</code>;<br>
+      &nbsp;&nbsp;- A descrição em <code>&lt;p&gt;</code>;<br>
+      &nbsp;&nbsp;- O link da imagem (<code>src="..."</code>) para uma imagem relevante;<br>
+      &nbsp;&nbsp;- O nome em <code>onclick="adicionarAoCarrinho('Apostila - ...')</code>;<br>
+      3. Salve o arquivo e recarregue no navegador.
+      <br><br>
+      <b>Dica:</b> Você pode usar imagens de bancos gratuitos como <a href="https://unsplash.com/" target="_blank">Unsplash</a> ou <a href="https://pexels.com/" target="_blank">Pexels</a>. Basta copiar o link da imagem e substituir no código!
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Catálogo Gourmet | Desenvolvido para [Seu Nome ou Marca]</p>
+  </footer>
+
+  <script>
+    // Carrinho robusto com persistência local
+    let carrinho = JSON.parse(localStorage.getItem('carrinhoGourmet')) || [];
+
+    function adicionarAoCarrinho(produto) {
+      carrinho.push(produto);
+      atualizarCarrinho();
+      localStorage.setItem('carrinhoGourmet', JSON.stringify(carrinho));
+    }
+
+    function atualizarCarrinho() {
+      const lista = document.getElementById('lista-carrinho');
+      lista.innerHTML = '';
+      if (carrinho.length === 0) {
+        lista.innerHTML = '<li>Seu carrinho está vazio.</li>';
+        return;
+      }
+      carrinho.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        li.style.marginBottom = '7px';
+        // Botão remover
+        const btnRemover = document.createElement('button');
+        btnRemover.textContent = 'Remover';
+        btnRemover.style.marginLeft = '15px';
+        btnRemover.style.background = '#c0392b';
+        btnRemover.style.color = '#fff';
+        btnRemover.style.border = 'none';
+        btnRemover.style.borderRadius = '4px';
+        btnRemover.style.cursor = 'pointer';
+        btnRemover.onclick = () => {
+          carrinho.splice(index, 1);
+          atualizarCarrinho();
+          localStorage.setItem('carrinhoGourmet', JSON.stringify(carrinho));
+        };
+        li.appendChild(btnRemover);
+        lista.appendChild(li);
+      });
+    }
+
+    function finalizarCompra() {
+      if (carrinho.length === 0) {
+        alert('Adicione ao menos uma apostila ao carrinho antes de finalizar a compra!');
+        return;
+      }
+      let mensagem = 'Obrigado por sua compra! Você será redirecionado para a página de pagamento.\n\nOpções disponíveis:\n- Pix\n- Cartão de crédito/débito\n\nCole aqui o link da Hotmart ou plataforma de pagamento.';
+      alert(mensagem);
+      // Aqui você pode fazer o redirecionamento real para Hotmart, MercadoPago, etc.
+      // window.location.href = "SEU_LINK_DE_PAGAMENTO";
+    }
+
+    // Atualizar carrinho ao carregar página
+    atualizarCarrinho();
+  </script>
+</body>
+</html>
